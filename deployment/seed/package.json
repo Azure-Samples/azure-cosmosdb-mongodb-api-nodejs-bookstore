@@ -1,0 +1,20 @@
+{
+    "name": "cosmos-books-migration",
+    "version": "1.0.0",
+    "description": "",
+    "main": "populate_data.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {},
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {},
+    "dependencies": {
+        "@azure/cosmos": "^3.5.2",
+        "node-fetch": "^2.6.1",
+        "yargs": "^15.1.0",
+        "mongodb": "^3.6.2"
+    }
+}

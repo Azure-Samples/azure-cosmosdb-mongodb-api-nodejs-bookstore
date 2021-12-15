@@ -1,0 +1,999 @@
+/* Typography imported from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+/* Generic styles */
+html {
+  scroll-behavior: smooth;
+  background-color:#232323;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.navbar {
+  position: fixed;
+  height: 5rem;
+  background-color: #232323;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  flex-direction: row;
+  display: flex;
+
+}
+
+@media (max-width: 1024px) {
+  .navbar {
+    flex-direction: column;
+  }
+}
+
+nav {
+  flex: 30%;
+  display: flex;
+}
+
+/* Navbar stuff */
+
+nav > .menuToggle
+{
+  z-index: 1;
+  -webkit-user-select: none;
+  user-select: none;
+  padding: 1.5rem;
+}
+
+
+
+nav > .menuToggle > input
+{
+  display: block;
+  position: absolute;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  margin: 0px;
+  opacity: 0; /* hide this */
+  z-index: 2; /* and place it over the hamburger */
+  -webkit-touch-callout: none;
+}
+
+/*
+ * Just a quick hamburger
+ */
+ nav > .menuToggle > span
+{
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  
+  background: #ff7518;
+  border-radius: 3px;
+  
+  z-index: 1;
+  
+  transform-origin: 4px 0px;
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+
+
+nav > .menuToggle > span:first-child
+{
+  transform-origin: 0% 0%;
+}
+
+nav > .menuToggle > span:nth-last-child(2)
+{
+  transform-origin: 0% 100%;
+}
+
+/* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+nav > .menuToggle > input:checked ~ span
+{
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #ff7518;
+}
+
+/*
+ * But let's hide the middle one.
+ */
+nav > .menuToggle > input:checked ~ span:nth-last-child(3)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * Ohyeah and the last one should go the other direction
+ */
+nav > .menuToggle > input:checked ~ span:nth-last-child(2)
+{
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+ 
+nav > .menuToggle > ul > li
+{
+  text-decoration: none;
+  color: white;
+  
+  transition: color 0.3s ease;
+}
+
+nav > .menuToggle > ul > li:hover
+{
+  color: #ff7518;
+}
+
+nav > .menuToggle > .menu
+{
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 200px;
+  margin: -105px 0 0 -50px;
+  padding: 50px;
+  padding-top: 125px;
+  height:70rem;
+  
+  background: #232323;
+  opacity: .99;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  
+  transform-origin: 0% 0%;
+  transform: translate(-100%, 0);
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+  border-color: gray;
+  border-width: 0.1rem;
+  border-style: solid;
+}
+
+nav > .menuToggle > .menu > li
+{
+  padding: 6px 0;
+  font-size: 1rem;
+}
+
+/*
+ * And let's slide it in from the left
+ */
+ nav > .menuToggle > input:checked ~ ul
+ {
+   transform: none;
+ }
+
+/* left slide done */
+
+
+/* Rating filters left sidebar styling */
+
+ .menuToggle > .menu > .ratingForm > .ratings-container {
+  background-color: transparent;
+  border-style: none;
+}
+
+.menuToggle > .menu > .ratingForm > .ratings-container:hover {
+  border-style: solid;
+  border-radius: 0.1px;
+}
+
+.menuToggle > .menu > .ratingForm > .selected {
+  border-style: solid;
+  border-radius: 0.1px;
+}
+
+
+.menuToggle > .menu > .ratingForm > .ratings-container > .star-ratings-sprite {
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2605/star-rating-sprite.png") repeat-x;
+  background-size: 1rem;
+  font-size: 0;
+  height: 1rem;
+  overflow: hidden;
+  text-indent: -999em;
+  width: 5rem;
+  display: inline-block;
+}
+
+.menuToggle > .menu > .ratingForm > .ratings-container > .star-ratings-sprite > .star-ratings-sprite-rating {
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2605/star-rating-sprite.png") repeat-x;
+  background-size: 1rem;
+  background-position: 0 100%;
+  float: left;
+  height: 1rem;
+  display:block;
+  opacity: 0.7;
+}
+
+.menuToggle > .menu > .ratingForm > .ratings-container  > .star-ratings-sprite-rating-text {
+  color: white;
+  font-size: 1rem;
+  height: 1rem;
+  vertical-align: top;
+}
+
+/* End of Rating filters left sidebar styles */
+
+
+
+/* Beginning of bookformat filter styles */
+nav > .menuToggle > .menu > .FormatForm > .FormatEntry {
+  color: white;
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1.4rem;
+}
+
+nav > .menuToggle > .menu > .FormatForm  > .FormatEntry:hover {
+  color: #ff7518;
+}
+
+/* hide the default checkbox */
+nav > .menuToggle > .menu > .FormatForm  > .FormatEntry > input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+nav > .menuToggle > .menu > .FormatForm  > .FormatEntry > .checkmark {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  height: 1rem;
+  width: 1rem;
+  background-color: #eee;
+  vertical-align: middle;
+}
+
+nav > .menuToggle > .menu > .FormatForm  > .FormatEntry > input:hover {
+  background-color: #ccc;
+}
+nav > .menuToggle > .menu > .FormatForm  > .FormatEntry > input:checked ~ .checked{
+  background-color: #ff7518;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+nav > .menuToggle > .menu > .FormatForm  > .FormatEntry > .checked:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+nav > .menuToggle > .menu > .FormatForm  > .FormatEntry > input:checked ~ .checked:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+nav > .menuToggle > .menu > .FormatForm  > .FormatEntry > .checked:after {
+  left: 4.5px;
+  top: 0.7px;
+  width: 5px;
+  height: 10px;
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* End of bookformat filter styles */
+
+/* Genre filter styles*/
+
+.menu > .genreForm > .genre-search {
+  height: 2.5rem;
+  width: 100%;
+  border-radius: .5rem;
+  background: #e9e9e9;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 1rem;
+  padding: 0.7rem;
+}
+
+.menu > .genreForm > .genre-search:focus {
+  outline-color: transparent;
+  outline-style: none;
+}
+
+.menu > .genreForm > .genreList {
+  list-style-type: none;
+  padding: 0 0.1rem;
+  height: 8rem;
+  overflow-y: scroll;
+  position: absolute;
+  z-index: 1;
+  width: 66%;
+}
+
+/* width */
+.menu > .genreForm > .genreList::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ff7518; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ff7518; 
+}
+.menu > .genreForm > .genreList > li {
+  background-color: white;
+  padding: 0.2rem 0.5rem;
+  font-size: 1rem;
+}
+
+.menu > .genreForm > .genreList > li:hover {
+  background-color: lightgray;
+  color: #ff7518;
+}
+
+.menu > .genres-container > ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+
+.menu > .genres-container > ul > li {
+  margin: 0.8rem 0.8rem 0.8rem 0;
+}
+
+.menu > .genres-container > ul > li > span {
+  background-color: #ff7518 ;
+  border-radius: .4rem;
+  padding: .5rem 0.5rem 0.5rem 0.5rem;
+  font-size: .8rem;
+  font-weight: 450;
+  color: white;
+}
+
+.menu > .genres-container > ul > .genre > span > .genre-remove {
+  background-color: transparent;
+  border-style: none;
+  position: relative;
+  top: -1px;
+  right: -5px;
+  font-weight: bold;
+  color: darkred;
+}
+
+/* End of Genre filter styles*/
+
+
+ .navbar > nav > .logo {
+  padding-top: 1.1rem;
+  text-decoration: none;
+}
+
+.navbar > nav > .logo > .logo-text {
+  font-size: 1.7rem;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.5rem;
+}
+
+.navbar > nav > .logo > .logo-text:hover {
+  color: #ff7518;
+  transition: all 0.5s ease;
+  -webkit-transition: all .5s ease;
+}
+
+ /* Start search box styles */
+
+.navbar > .search-box > .field >input,
+.navbar > .search-box > .field > button,
+.navbar > .search-box {
+  padding: 1rem;
+  border: none;
+  font-size: 1.1rem;
+  text-decoration: none;
+  
+}
+
+
+.navbar > .search-box {
+  flex: 50%;
+  /* padding-top: 1rem; */
+  background-color: #232323;
+  
+}
+
+.navbar > .search-box > .field {
+  display: flex;
+}
+
+.navbar > .search-box > .field > .search-query {
+  flex: 1 0 8em;
+  border-top-left-radius: .5rem;
+  border-bottom-left-radius: .5rem;
+  background: #e9e9e9;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  
+}
+
+.navbar > .search-box > .field > .search-query:focus {
+  outline-color: transparent;
+  outline-style: none;
+}
+
+
+.navbar > .search-box > .field > .search-submit-btn {
+  flex: 0 0 auto;
+  border:none;
+  border-top-right-radius: .5rem;
+  border-bottom-right-radius: .5rem;
+  background: #ff7518;
+  font-weight: 300;
+  color: #EDFFEC;
+}
+
+.navbar > .search-box > .field > .search-submit-btn:hover {
+  cursor: pointer;
+  background: hsl(24, 92%, 36%);
+  transition: all 0.5s ease;
+  -webkit-transition: all .5s ease;
+}
+/* End search box styles */
+ 
+/* Signup & Login styles */
+.navbar > .signup { 
+  flex: 10%;
+  padding: 0 1rem 0 1rem;
+  background-color: #232323;
+}
+
+.navbar > .login { 
+  flex: 10%;
+  padding: 0 1rem 0 1rem;
+  background-color: #232323;
+}
+
+.navbar > .signup > .signup-btn {
+  font-weight: 300;
+  font-size: 1.1rem;
+  background-color: #2780e3;
+  height: 3.4rem;
+  width: 100%;
+  margin: 1rem 0 1rem 0;
+  border: none;
+  color: #EDFFEC;
+  border-radius: .5rem;
+}
+
+.navbar > .signup > .signup-btn:hover {
+  background-color: #0d4c94;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  -webkit-transition: all .5s ease;
+}
+
+.navbar > .login > .login-btn {
+  font-weight: 300;
+  font-size: 1.1rem;
+  background-color: #3fb618;
+  height: 3.4rem;
+  width: 100%;
+  margin: 1rem 0 1rem 0;
+  border: none;
+  color: #EDFFEC;
+  border-radius: .5rem;
+}
+
+.navbar > .login > .login-btn:hover {
+  background-color: #237408;
+  cursor: pointer;
+  transition: all .5s ease;
+  -webkit-transition: all .5s ease;
+}
+
+/* End of Signup & Login styles */
+
+ /* End of Navbar stuff */
+
+
+/* Sortbar styles */
+
+.sortbar {
+  padding-top: 6rem;
+  padding-right: 4rem;
+  
+}
+
+@media (max-width: 1024px) {
+  .sortbar {
+    margin-top: 16.5rem;
+    padding: none;
+    height: 1rem;
+  }
+}
+
+.sortbar > .sortbartext {
+  float: right;
+  color: white;
+}
+
+.sortbar > .sortbartext > .sortselect {
+  background-color: #474646;
+  color: #EDFFEC;
+  width: 10rem;
+  height: 3.0rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: .5rem;
+  padding: 0 2rem 0 1rem;
+  -webkit-appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%);
+  background-position:
+    calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px),
+    calc(100% - 2.5em) 0.5em;
+  background-size:
+    5px 5px,
+    5px 5px,
+    1px 1.5em;
+  background-repeat: no-repeat;
+}
+
+.sortbar > .sortbartext > .sortselect:focus {
+  background-image:
+   linear-gradient(45deg, gray 50%, transparent 50%),
+    linear-gradient(135deg, transparent 50%, gray 50%);
+  background-position:
+    calc(100% - 15px) 1em,
+    calc(100% - 20px) 1em,
+    calc(100% - 2.5em) 0.5em;
+  background-size:
+    5px 5px,
+    5px 5px,
+    1px 1.5em;
+  background-repeat: no-repeat;
+  outline: none;
+}
+
+.sortbar > .sortbartext > .sortselect > option {
+  color: white;
+  width: inherit;
+  font-weight: 300;
+  font-size: 1.1rem;
+}
+
+
+/* End of Sortbar styles */
+
+/* books list styles */
+
+.books {
+  padding-top: 3rem;
+  margin-right: 3rem;
+}
+
+@media (max-width: 1024px) {
+  .books {
+    padding-top: 1.5rem;
+  }
+}
+
+.books > ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-gap: 1.5rem;
+  list-style-type: none;
+}
+
+.books > ul > li {
+  border: 1px solid #E2E2E2;
+  border-radius: 1rem;
+  margin: 1rem;
+}
+
+.books > ul > li:hover {
+  border: 1px solid #ff7518;
+  border-radius: 1rem;
+  margin: 1rem;
+  transition: all .5s ease;
+  -webkit-transition: all 1s ease;
+}
+
+
+.books > ul > li > a {
+  text-decoration: none;
+  color: white;
+}
+
+.books > ul > li > a > .item 
+{
+  position: relative;
+}
+
+.books > ul > li > a > .item > .item-overlay 
+{
+  line-height: normal;
+  color: white;
+  text-align: -webkit-left;
+  bottom: 0;
+  width: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 8rem;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  text-transform: none;
+}
+
+.books > ul > li > a > .item > .item-overlay > .book-title
+{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-weight:500;
+}
+
+.books > ul > li > a > .item > .item-overlay > .book-author
+{
+  font-family: 'Montserrat', sans-serif;
+  padding: 1rem;
+  font-size: .8rem;
+  font-weight:300;
+
+}
+
+/* End of books list styles */
+
+/* Book page styles */
+
+.book-page {
+  padding-top: 10rem;
+}
+
+
+
+.book-page > .book-img-and-metadata {
+  display: flex;
+  flex-direction: row;
+}
+
+.book-page > .book-img-and-metadata > .book-img-container {
+  flex: 48%;
+  margin: 0;
+  text-align: center;
+  position: relative;
+}
+
+.book-page > .book-img-and-metadata > .book-img-container > .book-image {
+  width: 65%;
+}
+
+
+.book-page > .book-img-and-metadata > .book-img-container > .book-title {
+  position: absolute;
+  width: 48%;
+  color: darkblue;
+  top: 16%;
+  font-size: 160%;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin: 0 30% 0 22%;
+  text-align: center;
+}
+
+
+.book-page > .book-img-and-metadata > .book-metadata {
+  flex: 52%;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  margin: 0 10rem 0 0;
+}
+
+.book-page > .book-img-and-metadata > .book-metadata > h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.book-page > .book-img-and-metadata > .book-metadata > h2 {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.book-page > .book-img-and-metadata > .book-metadata > div {
+  padding-top: 2rem;
+  font-size: 1rem;
+  line-height: 2rem;
+}
+
+
+@media (max-width: 1024px) {
+  .book-page {
+    padding-top: 22rem;
+  }
+
+  .book-page > .book-img-and-metadata {
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+  }
+
+  .book-page > .book-img-and-metadata > .book-metadata {
+    flex: 100%;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    margin: 0 1rem 0 1rem;
+  }
+
+  .book-page > .book-img-and-metadata > .book-img-container {
+    flex: 100%;
+    padding-bottom: 4rem;
+    
+  }
+
+  .book-page > .book-img-and-metadata > .book-img-container > .book-image {
+    width: 70%;
+    border-radius: 1rem;
+    border: 1px solid #ff7518;
+    margin: 0 0 0 0;
+  }
+
+
+
+  .book-page > .book-img-and-metadata > .book-metadata > h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0;
+  }
+  
+  .book-page > .book-img-and-metadata > .book-metadata > h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+  
+  .book-page > .book-img-and-metadata > .book-metadata > p {
+    padding-top: 2rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+
+/* star rating styles */
+
+.book-page > .book-img-and-metadata > .book-metadata > .ratings-container > .star-ratings-sprite {
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2605/star-rating-sprite.png") repeat-x;
+  font-size: 0;
+  height: 21px;
+  line-height: 0;
+  overflow: hidden;
+  text-indent: -999em;
+  width: 110px;
+}
+
+.book-page > .book-img-and-metadata > .book-metadata > .ratings-container > .star-ratings-sprite > .star-ratings-sprite-rating {
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2605/star-rating-sprite.png") repeat-x;
+  background-position: 0 100%;
+  float: left;
+  height: 21px;
+  display:block;
+  opacity: 0.7;
+}
+
+.book-page > .book-img-and-metadata > .book-metadata > .ratings-container > .rating-description {
+  margin-top: .5rem;
+}
+
+.book-page > .book-img-and-metadata > .book-metadata > .ratings-container > .rating-description > .rating-text {
+    font-size: .8rem;
+    font-style: italic;
+    font-weight: 400;
+}
+/* end of star rating styles */
+
+/* genre styles */
+
+.book-page > .book-img-and-metadata > .book-metadata > .genres-container > ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+
+.book-page > .book-img-and-metadata > .book-metadata > .genres-container > ul > li {
+  margin: 0.8rem 0.8rem 0.8rem 0;
+}
+
+.book-page > .book-img-and-metadata > .book-metadata > .genres-container > ul > li > span {
+  background-color: #ff7518 ;
+  border-radius: .4rem;
+  padding: .5rem 0.5rem 0.5rem 0.5rem;
+  font-size: .8rem;
+  font-weight: 400;
+}
+
+/* end of genre styles */
+
+
+/* Comment list styles */
+
+.book-page > .comments-container {
+  color: white;
+  margin: 4rem 7% 4rem 7.2%;
+}
+
+.book-page > .comments-container > .comments-list > .comment-entry{
+  list-style-type: none;
+  margin-bottom: 2rem;
+}
+
+.book-page > .comments-container > .comments-list > .comment-entry > .comment-name-box{
+  line-height: 2rem;
+  display: inline;
+}
+
+
+.book-page > .comments-container > .comments-list > .comment-entry > .comment-text{
+  font-style: italic;
+}
+
+
+@media (max-width: 1024px) {
+  .book-page > .comments-container {
+    margin: 4rem 1.5% 4rem 1.5%;
+  }
+}
+
+/* End of Comment list styles */
+
+/* Comment update styles */
+.book-page > .comments-container > .comment-input-box {
+  margin: 2.5rem 0 0 2.2rem;
+}
+.book-page > .comments-container > .comment-input-box > .comment-input-name {
+  font-size: 0.9rem;
+  width: 30%;
+  border: none;
+  padding: 7px;
+  border-radius: .5rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.book-page > .comments-container > .comment-input-box > .comment-input-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  width: 99%;
+  height: 8rem;
+  border: none;
+  border-radius: .5rem;
+  padding: 7px;
+}
+
+.book-page > .comments-container > .comment-input-box > .comment-input-name:focus {
+  outline-color: transparent;
+  outline-style: none;
+}
+
+.book-page > .comments-container > .comment-input-box > .comment-input-text:focus {
+  outline-color: transparent;
+  outline-style: none;
+}
+
+.book-page > .comments-container > .comment-input-box > .comment-button-div {
+  text-align: right;
+  margin: none;
+}
+.book-page > .comments-container > .comment-input-box > .comment-button-div > .comment-button  {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  border:none;
+  border-radius: .5rem;
+  background: #ff7518;
+  font-weight: 300;
+  color: #EDFFEC;
+  height: 2.8rem;
+  width: 10rem;
+}
+
+.book-page > .comments-container > .comment-input-box > .comment-button-div> .comment-button:hover {
+  cursor: pointer;
+  background: hsl(24, 92%, 36%);
+  transition: all 0.5s ease;
+  -webkit-transition: all .5s ease;
+}
+/* End of Comment update styles */
+
+/* Comment delete button styles */
+.book-page > .comments-container > .comments-list > .comment-entry > .comment-name-box > .remove-icon-btn {
+  width: 35px;
+  height: 30px;
+  border: 0.1px solid #cdcdcd;
+  background: #232323;
+  border-radius: 25px;
+  overflow: hidden;
+  position: relative;
+  transition: width 0.5s ease-in-out;
+  float: right;
+}
+.book-page > .comments-container > .comments-list > .comment-entry > .comment-name-box > .remove-btn:hover {
+  width: 120px;
+}
+.book-page > .comments-container > .comments-list > .comment-entry > .comment-name-box > .remove-btn::before,
+.book-page > .comments-container > .comments-list > .comment-entry > .comment-name-box > .remove-btn::after {
+  transition: width 0.5s ease-in-out, border-radius 0.2s ease-in-out;
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 10px;
+  top: calc(50% - 2px);
+  background: #ff7518;
+}
+.book-page > .comments-container > .comments-list > .comment-entry > .comment-name-box > .remove-btn::after {
+  right: 14px;
+  overflow: hidden;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+.book-page > .comments-container > .comments-list > .comment-entry > .comment-name-box > .remove-btn::before {
+  left: 14px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+.book-page > .comments-container > .comments-list > .comment-entry > .comment-name-box > .remove-icon-btn:focus {
+  outline: none;
+}
+.book-page > .comments-container > .comments-list > .comment-entry > .comment-name-box > .remove-btn > .remove-btn-txt {
+  opacity: 0;
+  transition: opacity 0.2s;
+  color: white;
+}
+.book-page > .comments-container > .comments-list > .comment-entry > .comment-name-box > .remove-btn:hover::before,
+.book-page > .comments-container > .comments-list > .comment-entry > .comment-name-box > .remove-btn:hover::after {
+  width: 4px;
+  border-radius: 2px;
+}
+.book-page > .comments-container > .comments-list > .comment-entry > .comment-name-box > .remove-btn:hover .remove-btn-txt {
+  opacity: 1;
+}
+/* End of Comment delete button styles */
+
